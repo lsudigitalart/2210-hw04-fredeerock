@@ -48,10 +48,16 @@ function draw() {
   if(cx > width) {
     cx = -cd/2;
     cc = color(0, 255, 0);
-    if(circleShot) {
-      difficulty+=1;
-    }
   }
+
+  if(circleShot) {
+    difficulty+=1;
+    circleShot = false; 
+  }
+
+  fill(0)
+  textSize(25);
+  text(difficulty, 10, 25)
 
 }
 

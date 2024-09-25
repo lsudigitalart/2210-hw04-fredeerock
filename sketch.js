@@ -4,12 +4,14 @@ function setup() {
   cx = width / 2;
   cy = height / 2;
   cd = 50;
+  cc = color(0, 255, 0);
 }
 
 let sx = -10;
 let sy;
 let fire = false;
 let cx, cy, cd;
+let cc;
 
 function draw() {
   background(220);
@@ -26,15 +28,20 @@ function draw() {
     sy = height;
   }
 
-  fill(0, 255, 0);
-
-
   if(dist(sx, sy, cx, cy) < cd) {
-    fill(255, 0, 0)
+    cc = color(255, 0, 0);
     fire = false;
   }
 
+  fill(cc);
   circle(cx, cy, cd)
+
+  cx+=10;
+
+  if(cx > width) {
+    cx = -cd/2;
+    cc = color(0, 255, 0);
+  }
 
 }
 

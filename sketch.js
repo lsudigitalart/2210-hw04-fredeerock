@@ -5,13 +5,17 @@ function setup() {
   cy = height / 2;
   cd = 50;
   cc = color(0, 255, 0);
+  difficulty = 1;
+  circleShot = false;
+  fire = false;
+  sx = -10;
 }
 
-let sx = -10;
-let sy;
-let fire = false;
-let cx, cy, cd;
-let cc;
+let sx, sy;
+let cx, cy, cd, cc;
+let fire;
+let difficulty;
+let circleShot;
 
 function draw() {
   background(220);
@@ -19,7 +23,7 @@ function draw() {
   if(fire) {
     fill(0);
     square(sx, sy, 5)
-    sy = sy - 10;
+    sy = sy - 25;
     print("FIRE!")
   }
 
@@ -31,16 +35,22 @@ function draw() {
   if(dist(sx, sy, cx, cy) < cd) {
     cc = color(255, 0, 0);
     fire = false;
+    circleShot = true;
+    sx = -10;
+    sy = -10;
   }
 
   fill(cc);
   circle(cx, cy, cd)
 
-  cx+=10;
+  cx = cx + difficulty;
 
   if(cx > width) {
     cx = -cd/2;
     cc = color(0, 255, 0);
+    if(circleShot) {
+      difficulty+=1;
+    }
   }
 
 }

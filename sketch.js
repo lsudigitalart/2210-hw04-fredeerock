@@ -11,14 +11,20 @@ function setup() {
   sx = -10;
 }
 
+function preload() {
+  img = loadImage("https://picsum.photos/200")
+}
+
 let sx, sy;
 let cx, cy, cd, cc;
 let fire;
 let difficulty;
 let circleShot;
+let img;
 
 function draw() {
   background(220);
+  image(img, 0, 0, width, height)
 
   if(fire) {
     fill(0);
